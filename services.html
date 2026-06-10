@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products & Services | DCL Mold & Auto Parts</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================================================
+           Header & Navigation Bar (ปรับขนาดและสีให้เท่ากับหน้าหลักอื่น ๆ 100%)
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* เปลี่ยนเป็นสีขาวทึบและเคลียร์เอฟเฟกต์เบลอออกเพื่อให้ขนาดและมิติเท่ากันทุกหน้า */
+            background-color: #ffffff; 
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); 
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* ควบคุมความสูงด้วย Padding แนวตั้งที่คงที่เท่าหน้าอื่น */
+            padding: 10px 0; 
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+        }
+
+        .logo img {
+            height: 28px; /* ควบคุมขนาดความสูงของรูปโลโก้ให้เท่ากัน */
+            width: auto;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+            margin-left: 4px;
+        }
+
+        .nav-right-group {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: #333333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu li a:hover,
+        .nav-menu li a.active {
+            color: var(--secondary-color); 
+        }
+
+        /* สำหรับปุ่มสลับภาษา (ถ้าหน้าอื่นมีโครงสร้างนี้ จะทำให้บาร์สูงเท่ากันพอดี) */
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 500;
+            color: #666666;
+        }
+
+        .lang-switch a {
+            text-decoration: none;
+            color: #666666;
+            transition: color 0.3s ease;
+        }
+
+        .lang-switch a:hover,
+        .lang-switch a.active {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .lang-divider {
+            margin: 0 6px;
+            color: #cccccc;
+        }
+
+        /* ==========================================================================
+           Product Portfolio Layout Styles
+           ========================================================================== */
+        .services-wrapper {
+            padding: 20px 0 80px 0; 
+        }
+        
+        .product-row {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 70px;
+        }
+        
+        .product-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .product-image-side {
+            flex: 1.3;
+            height: 420px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            border: 1px solid #e5e7eb;
+            position: relative;
+        }
+        
+        .product-image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        
+        .product-row:hover .product-image-side img {
+            transform: scale(1.04);
+        }
+        
+        .category-floating-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            padding: 5px 14px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            border-left: 3px solid var(--secondary-color);
+        }
+        
+        .product-row:nth-child(even) .category-floating-badge {
+            left: auto;
+            right: 20px;
+            border-left: none;
+            border-right: 3px solid var(--secondary-color);
+        }
+        
+        .product-text-side {
+            flex: 0.9;
+        }
+        
+        .product-title-style {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .product-title-style span {
+            color: var(--secondary-color);
+        }
+        
+        .product-desc {
+            color: #4b5563;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* Responsive สำหรับมือถือ */
+        @media (max-width: 991px) {
+            .nav-container {
+                padding: 10px 20px;
+            }
+            .nav-right-group {
+                gap: 15px;
+            }
+            .product-row, .product-row:nth-child(even) {
+                flex-direction: column;
+                gap: 25px;
+                margin-bottom: 50px;
+            }
+            .product-image-side {
+                width: 100%;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="PNG/messageImage_1780558434039.jpg" alt="DCL Logo">DCL <span>MOLD & AUTO PARTS</span>
+            </div>
+            
+            <div class="nav-right-group">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html" class="active">Products & Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+                
+                
+            </div>
+        </div>
+    </header>
+
+
+    <main class="main-content" style="padding-top: 75px;">
+        
+        <section class="container" style="padding-top: 0px; text-align: center;">
+            <h4 style="font-size: 13px; color: var(--secondary-color); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; font-weight: 600;">
+                OUR CAPABILITIES
+            </h4>
+            <h2 class="section-title" style="margin-bottom: 10px;">Main Business <span>(Products)</span></h2>
+        </section>
+
+        <section class="container services-wrapper">
+            
+            <div class="product-row">
+                <div class="product-image-side">
+                    <div class="category-floating-badge">STAMPING PARTS</div>
+                    <img src="PNG/Present 2025 YR (8).png" alt="Electrical Appliance Parts">
+                </div>
+                <div class="product-text-side">
+                    <h3 class="product-title-style">Electrical Appliance <span>Parts</span></h3>
+                    <p class="product-desc">
+                        High-volume stamped or pressed sheet metal components and internal structures (Fixing Panels & Chassis setup) using advanced high-speed progressive stamping mold processes. Our production line is highly trusted by leading global electrical brands such as HITACHI, Canon, Electrolux, and SAMSUNG.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary" style="padding: 10px 24px; font-size: 14px;">Request Quote</a>
+                </div>
+            </div>
+
+            <div class="product-row">
+                <div class="product-image-side">
+                    <div class="category-floating-badge">AUTO PARTS</div>
+                    <img src="PNG/Present 2025 YR (3).png" alt="Automotive Pressed Parts">
+                </div>
+                <div class="product-text-side">
+                    <h3 class="product-title-style">Automotive & Truck <span>Parts</span></h3>
+                    <p class="product-desc">
+                        High-accuracy metal stamping parts and heavy-duty structural components for automobile manufacturers and assemblers. We handle a diverse range of dimensions with our heavy tonnage press machine lines ranging from 300T to 600T, fully compliant with the IATF 16949 automotive quality standard.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary" style="padding: 10px 24px; font-size: 14px;">Request Quote</a>
+                </div>
+            </div>
+
+            <div class="product-row">
+                <div class="product-image-side">
+                    <div class="category-floating-badge">CUSTOM PARTS</div>
+                    <img src="PNG/Present 2025 YR (2).png" alt="Motorcycle Parts">
+                </div>
+                <div class="product-text-side">
+                    <h3 class="product-title-style">Motorcycle & Agricultural <span>Parts</span></h3>
+                    <p class="product-desc">
+                        Precision manufacturing of iron & steel fittings, custom brackets, and structural welding assemblies engineered for high durability. Every piece delivers pristine edges and rock-solid dimensional integrity strictly matching 100% of the technical drawing specifications.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary" style="padding: 10px 24px; font-size: 14px;">Request Quote</a>
+                </div>
+            </div>
+
+            <div class="product-row">
+                <div class="product-image-side">
+                    <div class="category-floating-badge">MOLD TOOLING</div>
+                    <img src="PNG/Present 2025 YR (4).png" alt="Mold & Die Layout">
+                </div>
+                <div class="product-text-side">
+                    <h3 class="product-title-style">Mold Design <span>& Manufacturing</span></h3>
+                    <p class="product-desc">
+                        Full-cycle tool engineering, setup, and maintenance for both production stamping dies (Progressive & Stage Die) and prototype tooling developments. Equipped with state-of-the-art CNC machining centers and advanced wire-cut machinery, operated through strategic synergy with our expert manufacturing base in Dongguan, China.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary" style="padding: 10px 24px; font-size: 14px;">Request Quote</a>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 8px; color: #9ca3af;">Main Factory Location (Fac 1): 98/10 Moo 2, Nong Chak, Ban Bueng, Chon Buri, Thailand 20170</p>
+            <p>&copy; 2026 DCL Mold & Auto Parts Co., Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

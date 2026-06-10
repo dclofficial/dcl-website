@@ -1,0 +1,248 @@
+/* --- Google Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap');
+
+/* --- Reset & Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
+}
+
+body {
+    color: #333333;
+    background-color: #fcfcfc;
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+/* --- Theme Colors (สไตล์โรงงานรถยนต์/แม่พิมพ์) --- */
+/* --- Theme Colors (ปรับปรุงใหม่: สไตล์ส้ม-เทา สว่างทันสมัย ไม่เข้มเกินไป) --- */
+:root {
+    --primary-color: #4b5563;   /* สีเทาเข้มอุตสาหกรรม (Slate Gray) - ใช้กับหัวข้อหลักและตัวอักษรสำคัญ */
+    --secondary-color: #f97316; /* สีส้มสว่างนุ่มนวล (Safety Orange) - ใช้เน้นจุดสำคัญ ลิงก์ และขอบกล่อง */
+    --accent-color: #ff9800;    /* สีส้มอ่อน/ทอง - สำหรับเน้นสถานะหรือไฮไลท์พิเศษ */
+    --dark-bg: #1f2937;         /* สีเทาเข้ม (สำหรับพื้นหลัง Footer ให้ดูมีฐานรับน้ำหนัก) */
+    --light-bg: #f8fafc;        /* สีเทาขาวสว่าง (Slate Light) - สำหรับพื้นหลังพื้นผิวทั่วไป */
+}
+
+/* --- Layout Container --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--secondary-color);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu a {
+    font-weight: 500;
+    color: #4b5563;
+    font-size: 16px;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-menu a:hover, .nav-menu a.active {
+    color: var(--secondary-color);
+}
+
+/* --- Main Content Wrap (ดันเนื้อหาลงมาหลบ Header) --- */
+.main-content {
+    margin-top: 80px;
+}
+
+/* --- Hero Section (หน้าแรก) --- */
+.hero {
+    background: linear-gradient(rgba(12, 35, 64, 0.85), rgba(17, 24, 39, 0.85)), 
+                url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    text-align: left;
+}
+
+.hero-content h1 {
+    font-size: 46px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 35px;
+    max-width: 700px;
+    color: #e5e7eb;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #165b96;
+}
+
+/* --- Global Section Title --- */
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.section-title span {
+    color: var(--secondary-color);
+}
+
+/* --- Page Content Layouts --- */
+.page-section {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: var(--light-bg);
+}
+
+/* Grid Systems */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Card Styles */
+.card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-bottom-color: var(--secondary-color);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+/* Table Style (สำหรับแสดงรายการเครื่องจักรโรงงาน) */
+.machine-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #ffffff;
+}
+
+.machine-table th, .machine-table td {
+    padding: 15px;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.machine-table th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.machine-table tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+/* Contact Form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--dark-bg);
+    color: #9ca3af;
+    padding: 40px 0;
+    text-align: center;
+    font-size: 14px;
+    border-top: 4px solid var(--secondary-color);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .nav-container { flex-direction: column; height: auto; padding: 15px 0; }
+    .nav-menu { gap: 15px; margin-top: 15px; }
+    .grid-2 { grid-template-columns: 1fr; gap: 30px; }
+    .hero-content h1 { font-size: 32px; }
+}
