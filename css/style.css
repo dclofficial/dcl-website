@@ -128,7 +128,7 @@ header {
 
 .btn-primary {
     background-color: var(--secondary-color);
-    color: #ffffff;
+    color: #38427a;
 }
 
 .btn-primary:hover {
@@ -173,7 +173,7 @@ header {
 
 /* Card Styles */
 .card {
-    background: #ffffff;
+    background: #2f226b;
     padding: 40px 30px;
     border-radius: 6px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
